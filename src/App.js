@@ -7,14 +7,12 @@ import Header from "./Component/Header";
 export default function App() {
   return (
     <div className="App">
-         <Header />
+      <Header />
       <Container>
-     
-
-        <Row></Row>
+        <Row>
+          <Planets />
+        </Row>
       </Container>
-
-      <Planets />
     </div>
   );
 }
