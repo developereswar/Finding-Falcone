@@ -1,26 +1,24 @@
 import React, { useEffect, Fragment, useState } from "react";
 import Axios from "axios";
 
-import { Col, Button } from "reactstrap";
-import Distance from "./Distance";
-const Planets = props => {
+import { Col, Input } from "reactstrap";
+const Planets = (props) => {
   const [planets, setPlanet] = useState([]);
-  const [distance, setDistance]=useState(0)
+  const [distance, setDistance] = useState(0);
   useEffect(() => {
     getData();
-  });
+  }, []);
 
-  const getData = function() {
+  const getData = function () {
     let URL = "https://findfalcone.herokuapp.com/planets";
     Axios.get(URL)
-      .then(e => {
+      .then((e) => {
         setPlanet(e.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
-
 
   return (
     <Fragment>
@@ -29,14 +27,86 @@ const Planets = props => {
           Select planets you want to search in :
         </h1>
       </Col>
+      <Col sm='3'>
+      <Input type="select" name="select" id="exampleSelect">
+        {planets.length
+          ? planets.map((palentdata, index) => {
+              return (
+                <option
+                  onClick={() => {
+                    setDistance(palentdata.distance);
+                  }}
+                  key={index}
+                  value={palentdata.name}
+                >
+                  {palentdata.name}
+                </option>
+              );
+            })
+          : "No Data"}
+      </Input>
+      </Col>
 
-      {planets.length
-        ? planets.map((palentdata, index) => {
-            return <Button onClick={()=>{ setDistance(palentdata.distance) }} key={index}>{palentdata.name}</Button>;
-          })
-        : "No Data"}
+      <Col sm='3'>
+      <Input type="select" name="select" id="exampleSelect">
+        {planets.length
+          ? planets.map((palentdata, index) => {
+              return (
+                <option
+                  onClick={() => {
+                    setDistance(palentdata.distance);
+                  }}
+                  key={index}
+                  value={palentdata.name}
+                >
+                  {palentdata.name}
+                </option>
+              );
+            })
+          : "No Data"}
+      </Input>
+      </Col>
 
-        <Distance  PlanetDist= {distance} />
+      <Col sm='3'>
+      <Input type="select" name="select" id="exampleSelect">
+        {planets.length
+          ? planets.map((palentdata, index) => {
+              return (
+                <option
+                  onClick={() => {
+                    setDistance(palentdata.distance);
+                  }}
+                  key={index}
+                  value={palentdata.name}
+                >
+                  {palentdata.name}
+                </option>
+              );
+            })
+          : "No Data"}
+      </Input>
+      </Col>
+
+
+      <Col sm='3'>
+      <Input type="select" name="select" id="exampleSelect">
+        {planets.length
+          ? planets.map((palentdata, index) => {
+              return (
+                <option
+                  onClick={() => {
+                    setDistance(palentdata.distance);
+                  }}
+                  key={index}
+                  value={palentdata.name}
+                >
+                  {palentdata.name}
+                </option>
+              );
+            })
+          : "No Data"}
+      </Input>
+      </Col>
     </Fragment>
   );
 };
