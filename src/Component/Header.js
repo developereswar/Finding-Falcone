@@ -5,11 +5,8 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
+  NavItem,
+  NavLink
 } from "reactstrap";
 
 const Header = props => {
@@ -19,11 +16,18 @@ const Header = props => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+      <Navbar color="dark" dark expand="md">
+        <NavbarBrand href="/">Finding Falcone</NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <NavbarText>Simple Text</NavbarText>
+        <Collapse isOpen={isOpen} navbar className="justify-content-end">
+          <Nav  navbar>
+            <NavItem>
+              <NavLink href="/">Reset</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/">Geek Trust Home</NavLink>
+            </NavItem>
+          </Nav>
         </Collapse>
       </Navbar>
     </div>
